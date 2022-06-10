@@ -1,12 +1,11 @@
 package com.rohit.login.User.Management.With.TDD.Example.model;
 
 public class User {
-    private final String userid;
+    private  String userid;
     private final String username;
     private final String password;
     private final String about;
     public User(String userid, String username, String password, String about) {
-
         this.userid = userid;
         this.username = username;
         this.password = password;
@@ -23,6 +22,9 @@ public class User {
     }
     public String getAbout() {
         return about;
+    }
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     @Override
@@ -47,3 +49,6 @@ public class User {
         return result;
     }
 }
+
+
+
