@@ -53,7 +53,7 @@ public class UserServiceShould {
     }
 
     @Test public void
-    return_a_error_while_attempting_to_create_duplicate_user() throws UsernameAlreadyInUseException {
+    return_a_error_while_attempting_to_create_duplicate_user() {
         given(userRepository.isUserTaken(USERNAME)).willReturn(true);
         assertThrows(UsernameAlreadyInUseException.class,
                 ()->userService.createUser(REGISTRATION_DATA));
