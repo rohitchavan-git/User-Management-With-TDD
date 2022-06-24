@@ -46,6 +46,7 @@ public class UserServiceShould {
     @Test public void
     crate_a_new_user() throws UsernameAlreadyInUseException {
         given(idGenerator.next()).willReturn(USER_ID);
+        given( userRepository.isUserTaken(USERNAME ) ).willReturn(false);
         User result=userService.createUser(REGISTRATION_DATA);
         verify(userRepository).add(USER);
         assertEquals(result,USER);

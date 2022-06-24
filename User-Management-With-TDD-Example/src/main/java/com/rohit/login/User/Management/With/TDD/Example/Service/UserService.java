@@ -21,11 +21,14 @@ public class UserService {
     public User createUser(RegistrationData registrationData)
             throws UsernameAlreadyInUseException {
         isValidUser(registrationData);
-        String userid = idGenerator.next();
-        User user =new User(userid, registrationData.getUsername(),
-                registrationData.getPassword(),registrationData.getAbout());
+        User user = userFrom( registrationData );
         userRepository.add(user);
         return user;
+    }
+
+    private User userFrom(RegistrationData registrationData) {
+        return new User( idGenerator.next(), registrationData.getUsername(),
+                registrationData.getPassword(), registrationData.getAbout());
     }
 
     private void isValidUser(RegistrationData registrationData) throws UsernameAlreadyInUseException {
