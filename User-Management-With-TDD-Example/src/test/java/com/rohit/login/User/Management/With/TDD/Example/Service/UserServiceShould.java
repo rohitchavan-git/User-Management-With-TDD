@@ -28,12 +28,12 @@ public class UserServiceShould {
             new RegistrationData(USERNAME,PASSWORD,ABOUT);
     private static final String USER_ID = randomUUID().toString();
     private static final User USER = aUser()
-                                    .userid(USER_ID)
-                                    .username(USERNAME)
-                                    .password(PASSWORD)
-                                    .about(ABOUT)
-                                .build();
-    UserService userService ;
+                                        .userid(USER_ID)
+                                        .username(USERNAME)
+                                        .password(PASSWORD)
+                                        .about(ABOUT)
+                                    .build();
+    UserService userService;
     @Mock  UserRepository userRepository;
 
     @Mock IdGenerator idGenerator;
@@ -46,7 +46,7 @@ public class UserServiceShould {
     @Test public void
     crate_a_new_user() throws UsernameAlreadyInUseException {
         given(idGenerator.next()).willReturn(USER_ID);
-        given( userRepository.isUserTaken(USERNAME ) ).willReturn(false);
+        given( userRepository.isUserTaken(USERNAME)).willReturn(false);
         User result=userService.createUser(REGISTRATION_DATA);
         verify(userRepository).add(USER);
         assertEquals(result,USER);
@@ -58,7 +58,5 @@ public class UserServiceShould {
         assertThrows(UsernameAlreadyInUseException.class,
                 ()->userService.createUser(REGISTRATION_DATA));
     }
-
-
 
 }

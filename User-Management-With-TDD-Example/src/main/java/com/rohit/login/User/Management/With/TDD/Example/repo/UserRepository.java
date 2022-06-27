@@ -11,18 +11,15 @@ import java.util.Optional;
 @Repository
 public class UserRepository {
 
-    private List<User> allUser=new ArrayList<>();
+    private final List<User> allUser=new ArrayList<>();
 
-    public User add(User registrationData) {
-        allUser.add( registrationData );
-        return registrationData;
+    public void add(User user) {
+        allUser.add(user);
     }
 
     public boolean isUserTaken(String username) {
-
-        return Optional.ofNullable(allUser).stream()
-                .flatMap(Collection::stream)
-                .map( User::getUsername )
+        return allUser.stream()
+                .map(User::getUsername)
                 .anyMatch(username::equals);
     }
 }
