@@ -38,8 +38,6 @@ class UserAPIShould {
                                             .about(ABOUT)
                                         .build();
 
-    private static final User ROHIT=aUser().build();
-    private static final User URMILA=aUser().build();
     UserAPI userApi;
     @Mock UserService userService;
 

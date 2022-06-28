@@ -1,5 +1,7 @@
 package com.rohit.login.User.Management.With.TDD.Example.model;
 
+import java.util.Optional;
+
 public class User {
     private  String userid;
     private final String username;
@@ -47,6 +49,16 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (about != null ? about.hashCode() : 0);
         return result;
+    }
+
+    Optional<String> getUsernameOpt() {
+        return Optional.ofNullable(this)
+                .map(User::getUsername);
+    }
+
+    Optional<String> getPasswordOpt() {
+        return Optional.ofNullable(this)
+                .map(User::getPassword);
     }
 }
 
